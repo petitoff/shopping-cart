@@ -1,17 +1,18 @@
 export interface Product {
   id: string;
-  name: string;
-  price: number;
-  description: string;
-  imageURL: string;
-  imageAlt: string;
-  imageCredit: string;
+  name?: string;
+  price?: number;
+  description?: string;
+  imageURL?: string;
+  imageAlt?: string;
+  imageCredit?: string;
 }
 
 export async function getProducts(): Promise<Product[]> {
-  const results = await fetch("/products.json");
-  const products = results.json();
-  return products;
+  const results = require("./products.json");
+  // const products = results.json();
+
+  return results;
 }
 
 export type CartItems = { [productID: string]: number };
@@ -33,5 +34,4 @@ export async function checkout(items: CartItems): Promise<CheckoutResponse> {
 }
 
 // utility function to simulate slowness in an API call
-const sleep = (time: number) =>
-  new Promise((res) => setTimeout(res, time));
+const sleep = (time: number) => new Promise((res) => setTimeout(res, time));
