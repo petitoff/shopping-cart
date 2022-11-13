@@ -16,7 +16,15 @@ const productSlice = createSlice({
     receivedProducts(state, action: PayloadAction<Product[]>) {
       const products = action.payload;
       products.forEach((product) => {
-        state.products.push(product);
+        // if product already exists, update it
+        const existingProduct = state.products.find((p) => p.id === product.id);
+        if (existingProduct) {
+          existingProduct.name = product.name;
+          existingProduct.price = product.price;
+        } else {
+          // otherwise add it
+          state.products.push(product);
+        }
       });
     },
   },
