@@ -4,10 +4,16 @@ import { getProducts, Product } from "../../app/api";
 import { receivedProducts } from "../../redux/productsSlice";
 import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
 import ProductCard from "./ProductCard";
+import { addToCart } from "../../redux/cartSlice";
+import { CartLink } from "../cart/CartLink";
 
 export function Products() {
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.productsSlice.products);
+
+  const handleAddToCart = (product: Product) => {
+    dispatch(addToCart(product.id));
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -21,9 +27,21 @@ export function Products() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "flex-end",
+          paddingHorizontal: 20,
+          paddingVertical: 20,
+        }}
+      >
+        <CartLink />
+      </View>
       <FlatList
         data={products}
-        renderItem={({ item }) => <ProductCard productData={item} />}
+        renderItem={({ item }) => (
+          <ProductCard productData={item} onAddToCart={handleAddToCart} />
+        )}
         style={{ marginTop: 10 }}
       />
     </SafeAreaView>

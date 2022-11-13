@@ -3,9 +3,13 @@ import { Product } from "../../models/Product";
 
 interface Props {
   productData: Product;
+  onAddToCart: (product: Product) => void;
 }
 
-const ProductCard = ({ productData }: Props) => {
+const ProductCard = ({ productData, onAddToCart }: Props) => {
+  const handleAddToCart = () => {
+    onAddToCart(productData);
+  };
   return (
     <View style={styles.container}>
       {productData?.imageURL && (
@@ -18,7 +22,7 @@ const ProductCard = ({ productData }: Props) => {
       </View>
 
       <View style={styles.buttonContainer}>
-        <Button title="Add to cart" />
+        <Button title="Add to cart" onPress={handleAddToCart} />
       </View>
     </View>
   );

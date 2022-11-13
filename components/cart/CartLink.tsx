@@ -1,11 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styles from "./CartLink.module.css";
+import { View, Text } from "react-native";
+import { useAppSelector } from "../../hooks/hooks";
+import { getNumItems } from "../../redux/cartSlice";
 
 export function CartLink() {
+  const numItems = useAppSelector(getNumItems);
+
   return (
-    <Link to="/cart" className={styles.link}>
-      <span className={styles.text}>🛒&nbsp;&nbsp;Cart</span>
-    </Link>
+    <View>
+      <Text>🛒&nbsp;&nbsp;{numItems}</Text>
+    </View>
   );
 }
