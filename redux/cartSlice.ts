@@ -1,5 +1,5 @@
 import { RootState } from "./store";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, createSelector, PayloadAction } from "@reduxjs/toolkit";
 
 export interface CartSlice {
   items: { [productId: string]: number };
@@ -27,10 +27,21 @@ const cartSlice = createSlice({
 export const { addToCart } = cartSlice.actions;
 export default cartSlice.reducer;
 
-export function getNumItems(state: RootState) {
+export const getNumItems = (state: RootState) => {
   let numItems = 0;
   for (let id in state.cartSlice.items) {
     numItems += state.cartSlice.items[id];
   }
   return numItems;
-}
+};
+
+export const getMemoizedNumItems = createSelector(
+  (state: RootState) => state.cartSlice.items,
+  (items) => {
+    let numItems = 0;
+    for (let id in items) {
+      numItems += items[id];
+    }
+    return numItems;
+  }
+);

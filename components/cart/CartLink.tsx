@@ -1,13 +1,13 @@
 import { View, Text } from "react-native";
 import { useAppSelector } from "../../hooks/hooks";
-import { getNumItems } from "../../redux/cartSlice";
+import { getMemoizedNumItems } from "../../redux/cartSlice";
 
 export function CartLink() {
-  const numItems = useAppSelector(getNumItems);
+  const numItems = useAppSelector(getMemoizedNumItems);
 
   return (
     <View>
-      <Text>🛒&nbsp;&nbsp;{numItems}</Text>
+      <Text>🛒&nbsp;&nbsp;{numItems ? numItems : "Cart"}</Text>
     </View>
   );
 }
