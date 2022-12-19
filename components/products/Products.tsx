@@ -7,7 +7,7 @@ import ProductCard from "./ProductCard";
 import { addToCart } from "../../redux/cartSlice";
 import { CartLink } from "../cart/CartLink";
 
-export function Products() {
+export function ProductsView() {
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.productsSlice.products);
 
@@ -50,7 +50,6 @@ export function Products() {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 30,
     backgroundColor: "#F7F7F8",
     height: "100%",
   },

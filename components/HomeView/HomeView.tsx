@@ -25,5 +25,6 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "flex-end",
     paddingHorizontal: 20,
+    paddingVertical: 20,
   },
 });

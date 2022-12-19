@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Products } from "../components/products/Products";
 import HomeScreen from "../screens/HomeScreen/HomeScreen";
+import ProductScreen from "../screens/ProductScreen/ProductScreen";
 import { View, Text } from "react-native";
 
 export const AppBottomTabNavigator = () => {
@@ -21,7 +21,7 @@ export const AppBottomTabNavigator = () => {
       />
       <BottomTab.Screen
         name="Products"
-        component={Products}
+        component={ProductScreen}
         options={{
           tabBarIcon: () => (
             <View>

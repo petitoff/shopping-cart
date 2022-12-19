@@ -1,6 +1,5 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Products } from "../components/products/Products";
 import { AppBottomTabNavigator } from "./AppBottomTabNavigator";
 
 export const RootNavigator = () => {
@@ -16,6 +15,7 @@ export const RootNavigator = () => {
           name="AppBottomTabNavigator"
           component={AppBottomTabNavigator}
         />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
