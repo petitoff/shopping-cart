@@ -1,11 +1,15 @@
 import { View, Text, StyleSheet } from "react-native";
 import { CartLink } from "../cart/CartLink";
 
-const HomeView = () => {
+interface Props {
+  onNavigateToCart: () => void;
+}
+
+const HomeView = ({ onNavigateToCart }: Props) => {
   return (
     <View>
       <View style={styles.cartLink}>
-        <CartLink />
+        <CartLink onNavigateToCart={onNavigateToCart} />
       </View>
       <View style={styles.title}>
         <Text>Welcome to the Store</Text>

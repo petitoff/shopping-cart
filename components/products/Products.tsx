@@ -7,7 +7,11 @@ import ProductCard from "./ProductCard";
 import { addToCart } from "../../redux/cartSlice";
 import { CartLink } from "../cart/CartLink";
 
-export function ProductsView() {
+interface Props {
+  onNavigateToCart: () => void;
+}
+
+export function ProductsView({ onNavigateToCart }: Props) {
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.productsSlice.products);
 
@@ -35,7 +39,7 @@ export function ProductsView() {
           paddingVertical: 20,
         }}
       >
-        <CartLink />
+        <CartLink onNavigateToCart={onNavigateToCart} />
       </View>
       <FlatList
         data={products}

@@ -9,7 +9,7 @@ export const AppBottomTabNavigator = () => {
   return (
     <BottomTab.Navigator screenOptions={{ headerShown: false }}>
       <BottomTab.Screen
-        name="Home"
+        name="HomeScreen"
         component={HomeScreen}
         options={{
           tabBarIcon: () => (
@@ -20,7 +20,7 @@ export const AppBottomTabNavigator = () => {
         }}
       />
       <BottomTab.Screen
-        name="Products"
+        name="ProductScreen"
         component={ProductScreen}
         options={{
           tabBarIcon: () => (

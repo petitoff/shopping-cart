@@ -1,12 +1,19 @@
-import { View, Text } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import { useAppSelector } from "../../hooks/hooks";
 import { getMemoizedNumItems } from "../../redux/cartSlice";
-export function CartLink() {
+
+interface Props {
+  onNavigateToCart: () => void;
+}
+
+export function CartLink({ onNavigateToCart }: Props) {
   const numItems = useAppSelector(getMemoizedNumItems);
 
   return (
     <View>
-      <Text>🛒&nbsp;&nbsp;{numItems ? numItems : "Cart"}</Text>
+      <Pressable onPress={onNavigateToCart}>
+        <Text>🛒&nbsp;&nbsp;{numItems ? numItems : "Cart"}</Text>
+      </Pressable>
     </View>
   );
 }
