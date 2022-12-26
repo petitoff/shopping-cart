@@ -1,6 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../screens/HomeScreen/HomeScreen";
 import ProductScreen from "../screens/ProductScreen/ProductScreen";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { View, Text } from "react-native";
 
 export const AppBottomTabNavigator = () => {
@@ -13,9 +14,9 @@ export const AppBottomTabNavigator = () => {
         component={HomeScreen}
         options={{
           tabBarIcon: () => (
-            <View>
-              <Text>🏠</Text>
-            </View>
+            <Text>
+              <Ionicons name="home" size={22} color="blue" />
+            </Text>
           ),
         }}
       />
@@ -25,7 +26,9 @@ export const AppBottomTabNavigator = () => {
         options={{
           tabBarIcon: () => (
             <View>
-              <Text>⚒</Text>
+              <Text>
+                <Ionicons name="apps" size={22} color="blue" />
+              </Text>
             </View>
           ),
         }}
