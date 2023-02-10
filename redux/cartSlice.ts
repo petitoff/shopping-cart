@@ -21,6 +21,17 @@ const cartSlice = createSlice({
         state.items[id] = 1;
       }
     },
+    removeFromCart(state, action: PayloadAction<string>) {
+      const id = action.payload;
+      if (state.items[id] >= 0) {
+        state.items[id]--;
+      } else {
+        // remove item by id
+        
+
+        delete state.items[id];
+      }
+    },
   },
 });
 

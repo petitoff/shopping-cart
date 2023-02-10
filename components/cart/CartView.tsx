@@ -1,9 +1,10 @@
 import { View, Text, FlatList, StyleSheet, Pressable } from "react-native";
-import { useAppSelector } from "../../hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import ProductCard from "./ProductCard";
 import { Product } from "../../models/Product";
 import { Ionicons } from "@expo/vector-icons";
 import { useEffect, useState } from "react";
+import { addToCart } from "../../redux/cartSlice";
 
 interface Props {
   onGoBack: () => void;
@@ -14,8 +15,10 @@ const CartView = ({ onGoBack }: Props) => {
   const cart = useAppSelector((state) => state.cartSlice.items);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
+  const dispatch = useAppDispatch();
+
   const handleAddToCart = (product: Product) => {
-    console.log("Add to cart", product);
+    dispatch(addToCart(product.id));
   };
 
   const handleGoBack = () => {

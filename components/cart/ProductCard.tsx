@@ -1,4 +1,4 @@
-import { View, Image, Text, StyleSheet, Button } from "react-native";
+import { View, Image, Text, StyleSheet, Button, Pressable } from "react-native";
 import { Product } from "../../models/Product";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -32,22 +32,30 @@ const ProductCard = ({ productData, numberOfProduct, onAddToCart }: Props) => {
               alignItems: "center",
             }}
           >
-            <Text>
-              <Ionicons name="remove-circle-outline" size={45} color="black" />
-            </Text>
+            <Pressable>
+              <Text>
+                <Ionicons
+                  name="remove-circle-outline"
+                  size={45}
+                  color="black"
+                />
+              </Text>
+            </Pressable>
             <Text style={{ marginHorizontal: 20, fontSize: 21 }}>
               {numberOfProduct}
             </Text>
-            <Text>
-              <Ionicons name="add-circle-outline" size={45} color="black" />
-            </Text>
+            <Pressable onPress={handleAddToCart}>
+              <Text>
+                <Ionicons name="add-circle-outline" size={45} color="black" />
+              </Text>
+            </Pressable>
           </View>
         </View>
       </View>
 
-      <View style={styles.buttonContainer}>
+      {/* <View style={styles.buttonContainer}>
         <Button title="Add to cart" onPress={handleAddToCart} />
-      </View>
+      </View> */}
     </View>
   );
 };
@@ -55,7 +63,7 @@ const ProductCard = ({ productData, numberOfProduct, onAddToCart }: Props) => {
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    height: "100%",
+    height: 150,
     flexDirection: "row",
     paddingHorizontal: 20,
     paddingVertical: 10,
